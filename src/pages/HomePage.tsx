@@ -22,10 +22,11 @@ function HomePage() {
 
       {user ? (
         <>
-          <p>Bienvenido, {user.name}</p>
-          <p>Carnet: {user.carnet}</p>
-          <p>Rol: {user.role}</p>
-
+            <p>Bienvenido, {user.nombre}</p>
+          <p>Email: {user.email}</p>
+          <p>Rol: {user.rol}</p>
+          <p>Dirección: {user.direccion}</p>
+          <p>Teléfono: {user.telefono}</p>
 
           <button type="button" onClick={handleLogout}>
             Cerrar sesión

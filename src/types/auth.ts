@@ -3,18 +3,18 @@ export type UserRole = "ADMIN" | "USUARIO";
 
 export interface User {
   id: string;
-  name: string;
-  carnet: string;
-  role: UserRole;
-}
+   nombre: string;
+  email: string;
+  rol: UserRole;
+  direccion: string;
+  telefono: string;
 
 
 export interface UserRecord extends User {
-  password: string;
-}
+  contraseña: string;
 
 
 export interface LoginCredentials {
-  carnet: string;
+   email: string;
   password: string;
 }

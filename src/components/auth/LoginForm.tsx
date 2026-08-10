@@ -11,7 +11,7 @@ interface LoginFormProps {
 
 
 function LoginForm({ error, onSubmit }: LoginFormProps) {
-  const [carnet, setCarnet] = useState("");
+   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -19,16 +19,16 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
     event.preventDefault();
 
 
-    const normalizedCarnet = carnet.trim();
+    const normalizedEmail = email.trim();
 
 
-    if (!normalizedCarnet || !password) {
+      if (!normalizedEmail || !password) {
       return;
     }
 
 
     onSubmit({
-      carnet: normalizedCarnet,
+      email: normalizedEmail,
       password,
     });
   };
@@ -40,17 +40,17 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
 
 
       <div>
-        <label htmlFor="carnet">Carnet de identidad</label>
+       <label htmlFor="email">Email</label>
 
 
         <input
-          id="carnet"
-          name="carnet"
-          type="text"
-          value={carnet}
-          onChange={(event) => setCarnet(event.target.value)}
-          placeholder="Ingrese su carnet"
-          autoComplete="username"
+          id="email"
+          name="email"
+          type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="Ingrese su email"
+          autoComplete="email"
           required
         />
       </div>
