@@ -22,7 +22,7 @@ export const authRepository = {
           user.email.toLowerCase() === normalizedEmail &&
         user.contraseña === credentials.password
     );
-    );
+    
 
 
     if (!foundUser) {
