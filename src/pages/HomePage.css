@@ -1,0 +1,79 @@
+.home-page {
+  position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow: auto;
+  background: #f4f6fb;
+  color: #1e2a5e;
+}
+
+.home-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
+  padding: 18px 48px;
+  background: #1e2a5e;
+  border: 3px solid #1e2a5e;
+  box-sizing: border-box;
+}
+
+.home-navbar__brand {
+  color: #ffffff;
+  font-family: "Brush Script MT", "Brush Script Std", cursive;
+  font-size: 2.4rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.home-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-navbar__link {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.home-navbar__link:hover,
+.home-navbar__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.home-content {
+  width: min(920px, calc(100% - 32px));
+  margin: 48px auto;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(30, 42, 94, 0.14);
+}
+
+.home-content__logout {
+  max-width: 220px;
+  margin-top: 16px;
+}
+
+@media (max-width: 720px) {
+  .home-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 24px;
+  }
+
+  .home-navbar__links {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
