@@ -1,0 +1,29 @@
+<svg width="680" height="760" viewBox="0 0 680 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mujer con chaqueta de jean</title>
+  <desc id="desc">Ilustración decorativa de una mujer sonriendo con chaqueta de jean para la portada de la tienda de moda.</desc>
+  <rect width="680" height="760" fill="#f7f7f7"/>
+  <ellipse cx="342" cy="714" rx="230" ry="28" fill="#d9dce7" opacity="0.55"/>
+  <path d="M225 188c-74 48-86 137-66 224 11 50 41 91 68 135 31 51 43 105 42 163h210c-9-73 23-141 49-207 34-87 50-181 9-260-52-100-206-122-312-55Z" fill="#7a4b2f"/>
+  <path d="M247 226c-50 55-60 136-42 210 12 49 44 91 79 125 55 53 133 43 185-9 47-48 70-123 63-191-9-92-62-163-143-179-53-10-106 4-142 44Z" fill="#8d5a38"/>
+  <path d="M256 336c-21 10-36 40-25 68 10 25 42 24 60 5l-35-73Z" fill="#f1bf9d"/>
+  <path d="M486 336c21 10 36 40 25 68-10 25-42 24-60 5l35-73Z" fill="#f1bf9d"/>
+  <path d="M278 253c-18 45-22 113-5 159 22 58 70 93 101 93s79-35 101-93c17-46 13-114-5-159-18-47-58-73-96-73s-78 26-96 73Z" fill="#f4c6a5"/>
+  <path d="M281 316c35-5 54-19 75-46 32 38 78 61 124 64-10-84-55-137-109-137-49 0-92 46-90 119Z" fill="#7a4b2f"/>
+  <path d="M302 363c17-13 36-13 52 0" stroke="#3a2a2a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M394 363c17-13 36-13 52 0" stroke="#3a2a2a" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="329" cy="380" r="7" fill="#2a2324"/>
+  <circle cx="419" cy="380" r="7" fill="#2a2324"/>
+  <path d="M375 382c-7 20-13 36-1 43 8 4 19 0 25-4" stroke="#d99c81" stroke-width="5" stroke-linecap="round"/>
+  <path d="M327 451c30 27 72 27 99 0" stroke="#9b3e48" stroke-width="8" stroke-linecap="round"/>
+  <path d="M263 526c23-43 67-68 111-68 47 0 91 25 114 68l31 184H229l34-184Z" fill="#ffffff"/>
+  <path d="M160 594c23-82 72-123 137-142l36 258H129l31-116Z" fill="#2f6f9f"/>
+  <path d="M521 594c-23-82-72-123-137-142l-36 258h204l-31-116Z" fill="#2f6f9f"/>
+  <path d="M297 452c21 72 40 147 48 258" stroke="#1f537b" stroke-width="10"/>
+  <path d="M384 452c-21 72-40 147-48 258" stroke="#1f537b" stroke-width="10"/>
+  <path d="M177 590c44 16 88 23 132 16" stroke="#8eb2cf" stroke-width="8" opacity="0.7"/>
+  <path d="M503 590c-44 16-88 23-132 16" stroke="#8eb2cf" stroke-width="8" opacity="0.7"/>
+  <circle cx="337" cy="568" r="11" fill="#f8f8f8" stroke="#9db6ca" stroke-width="4"/>
+  <circle cx="340" cy="632" r="11" fill="#f8f8f8" stroke="#9db6ca" stroke-width="4"/>
+  <path d="M198 552c-45 34-72 84-89 145" stroke="#f1bf9d" stroke-width="54" stroke-linecap="round"/>
+  <path d="M110 697c-10 18-6 40 13 49 20 9 43-4 50-25" fill="#f1bf9d"/>
+</svg>

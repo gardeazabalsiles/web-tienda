@@ -11,7 +11,7 @@
   {
     "id": "user-2",
        "nombre": "Usuario de prueba",
-    "email": "usuario@tienda.com",
+    "email": "sabrigardeazabal@gmail.com",
     "contraseña": "hola",
     "rol": "USUARIO",
     "direccion": "Calle Secundaria 456",
