@@ -15,10 +15,12 @@ const users = initialUsers as UserRecord[];
 
 export const authRepository = {
   login(credentials: LoginCredentials): User | null {
+    const normalizedEmail = credentials.email.trim().toLowerCase();
+
     const foundUser = users.find(
       (user) =>
-        user.carnet === credentials.carnet &&
-        user.password === credentials.password
+        user.email.toLowerCase() === normalizedEmail &&
+        user.contraseña === credentials.password
     );
 
 
@@ -29,9 +31,11 @@ export const authRepository = {
 
     const sessionUser: User = {
       id: foundUser.id,
-      name: foundUser.name,
-      carnet: foundUser.carnet,
-      role: foundUser.role,
+      nombre: foundUser.nombre,
+      email: foundUser.email,
+      rol: foundUser.rol,
+      direccion: foundUser.direccion,
+      telefono: foundUser.telefono,
     };
 
 

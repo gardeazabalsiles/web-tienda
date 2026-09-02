@@ -27,7 +27,7 @@ function LoginPage() {
 
 
     if (!user) {
-      setError("El carnet o la contraseña son incorrectos.");
+      setError("El email o la contraseña son incorrectos.");
       return;
     }
 

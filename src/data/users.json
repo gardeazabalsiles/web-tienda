@@ -1,17 +1,20 @@
 [
   {
     "id": "user-1",
-    "name": "Administrador",
-    "carnet": "1234567",
-    "password": "admin123",
-    "role": "ADMIN"
+    "nombre": "Administrador",
+    "email": "admin@tienda.com",
+    "contraseña": "admin123",
+    "rol": "ADMIN",
+    "direccion": "Av. Principal 123",
+    "telefono": "70000001"
   },
   {
     "id": "user-2",
-    "name": "Usuario de prueba",
-    "carnet": "1234",
-    "password": "hola",
-    "role": "USUARIO"
+    "nombre": "Usuario de prueba",
+    "email": "usuario@tienda.com",
+    "contraseña": "hola",
+    "rol": "USUARIO",
+    "direccion": "Calle Secundaria 456",
+    "telefono": "70000002"
   }
 ]
-
