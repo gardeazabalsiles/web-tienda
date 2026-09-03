@@ -102,7 +102,6 @@ function HomePage() {
         </div>
 
 
-    
         <div className="home-hero__text">
           <h1>Encuentra tu estilo</h1>
           <div className="home-hero__divider" />
@@ -113,15 +112,12 @@ function HomePage() {
         </div>
       </section>
 
-
-          
-            
+     
       <section className="products-section" id="productos">
         <div>
           <p className="products-section__eyebrow">Productos</p>
           <h2>Agrega productos a tu tienda</h2>
         </div>
-
 
         <form className="product-form" onSubmit={handleAddProduct}>
           <label htmlFor="product-name">Nombre del producto</label>
@@ -160,7 +156,7 @@ function HomePage() {
           <button className="product-form__button" type="submit">
             Agregar producto
           </button>
-
+      
         </form>
 
 
@@ -188,7 +184,7 @@ function HomePage() {
 
         {user ? (
           <>
-            <p>Bienvenido, {user.nombre}</p>
+            <p>Bienvenido, {user.nombre} {user.apellido}</p>
             <p>Email: {user.email}</p>
             <p>Rol: {user.rol}</p>
             <p>Dirección: {user.direccion}</p>

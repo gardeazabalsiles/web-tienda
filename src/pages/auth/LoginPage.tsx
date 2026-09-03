@@ -37,10 +37,11 @@ function LoginPage() {
 
 
   return (
-    <main>
+    <main className="auth-page">
       <LoginForm
         error={error}
         onSubmit={handleLogin}
+        onCreateAccount={() => navigate("/crear-cuenta")}
       />
     </main>
   );
