@@ -7,10 +7,11 @@ import "./LoginForm.css";
 interface LoginFormProps {
   error?: string;
   onSubmit: (credentials: LoginCredentials) => void;
+  onCreateAccount: () => void;
 }
 
 
-function LoginForm({ error, onSubmit }: LoginFormProps) {
+function LoginForm({ error, onSubmit, onCreateAccount }: LoginFormProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,7 +36,7 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit}>
       <h1>Iniciar sesión</h1>
 
 
@@ -81,10 +82,16 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
 
 
       <button type="submit">Ingresar</button>
+
+      <p className="auth-form__alternate">
+        ¿Aún no tienes cuenta?{" "}
+        <button className="auth-form__link" type="button" onClick={onCreateAccount}>
+          Crear cuenta
+        </button>
+      </p>
     </form>
   );
 }
 
 
 export default LoginForm;
-

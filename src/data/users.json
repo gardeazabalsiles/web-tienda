@@ -2,6 +2,7 @@
   {
     "id": "user-1",
     "nombre": "Administrador",
+    "apellido": "Principal",
     "email": "admin@tienda.com",
     "contraseña": "admin123",
     "rol": "ADMIN",
@@ -11,6 +12,7 @@
   {
     "id": "user-2",
     "nombre": "Usuario de prueba",
+    "apellido": "Ejemplo",
     "email": "usuario@tienda.com",
     "contraseña": "hola",
     "rol": "USUARIO",

@@ -184,7 +184,7 @@ function HomePage() {
 
         {user ? (
           <>
-            <p>Bienvenido, {user.nombre}</p>
+            <p>Bienvenido, {user.nombre} {user.apellido}</p>
             <p>Email: {user.email}</p>
             <p>Rol: {user.rol}</p>
             <p>Dirección: {user.direccion}</p>
@@ -209,4 +209,3 @@ function HomePage() {
 
 
 export default HomePage;
-
