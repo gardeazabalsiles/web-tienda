@@ -30,5 +30,4 @@ export interface RegistrationData {
   email: string;
   password: string;
   direccion: string;
-  rol: "USUARIO";
 }

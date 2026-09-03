@@ -70,7 +70,7 @@ export const authRepository = {
       apellido: data.apellido.trim(),
       email: normalizedEmail,
       contraseña: data.password,
-      rol: data.rol,
+      rol: "USUARIO",
       direccion: data.direccion,
       telefono: data.telefono.trim(),
     };
