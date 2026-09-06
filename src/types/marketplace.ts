@@ -11,6 +11,7 @@ export interface Product {
   sizes: string[];
   description: string;
   images: string[];
+  quantity: number;
   createdAt: string;
 }
 
