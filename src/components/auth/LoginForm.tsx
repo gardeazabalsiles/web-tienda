@@ -23,7 +23,6 @@ function LoginForm({ error, onSubmit, onCreateAccount }: LoginFormProps) {
       <div><label htmlFor="password">Contraseña</label><input id="password" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Tu contraseña" autoComplete="current-password" required /></div>
       {error && <p className="auth-error" role="alert" aria-live="polite">{error}</p>}
       <button className="auth-primary" type="submit">Entrar</button>
-      <p className="auth-form__alternate">¿Olvidaste tu contraseña? <span style={{color:"#a58a4a"}}>Recupérala próximamente</span></p>
       <p className="auth-form__alternate">¿Aún no tienes cuenta? <button className="auth-form__link" type="button" onClick={onCreateAccount}>Crear cuenta</button></p>
     </form>
   );
