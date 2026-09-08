@@ -1,6 +1,5 @@
 export type UserRole = "ADMIN" | "USUARIO";
 
-
 export interface User {
   id: string;
   nombre: string;
@@ -9,19 +8,17 @@ export interface User {
   rol: UserRole;
   direccion: string;
   telefono: string;
+  departamento: string;
 }
-
 
 export interface UserRecord extends User {
   contraseña: string;
 }
 
-
 export interface LoginCredentials {
   email: string;
   password: string;
 }
-
 
 export interface RegistrationData {
   nombre: string;
@@ -30,5 +27,6 @@ export interface RegistrationData {
   email: string;
   password: string;
   direccion: string;
+  departamento: string;
   rol: "USUARIO";
 }
