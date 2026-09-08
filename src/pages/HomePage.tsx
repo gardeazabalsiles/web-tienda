@@ -16,7 +16,7 @@ export default function HomePage() {
   const [cart] = useState<CartItem[]>(() => storageService.get<CartItem[]>(CART_KEY) ?? []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
-  const [contactOpen, setContactOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
 
   useEffect(() => {
     storageService.set(PRODUCTS_KEY, products);
@@ -25,7 +25,7 @@ export default function HomePage() {
   const closeMenu = () => {
     setMenuOpen(false);
     setCategoriesOpen(false);
-    setContactOpen(false);
+    setAboutOpen(false);
   };
 
   const chooseCategory = (category: ProductCategory) => {
@@ -74,13 +74,19 @@ export default function HomePage() {
               )}
             </div>
             <div className="side-menu-item">
-              <button onClick={() => setContactOpen((value) => !value)} type="button">
-                <span>CONTÁCTANOS</span><span className="menu-arrow">{contactOpen ? "⌃" : "›"}</span>
+              <button onClick={() => setAboutOpen((value) => !value)} type="button">
+                <span>SOBRE NOSOTROS</span><span className="menu-arrow">{aboutOpen ? "⌃" : "›"}</span>
               </button>
-              {contactOpen && (
+              {aboutOpen && (
                 <div className="contact-info">
-                  <div><strong>Sabrina Gardeazabal</strong><span>+591 72879584</span></div>
-                  <div><strong>Fernanda Siles</strong><span>+591 67636799</span></div>
+                  <div>
+                    <strong>Sabrina Gardeazabal</strong>
+                    <a href="https://wa.me/59172879584" target="_blank" rel="noreferrer" aria-label="Contactar a Sabrina Gardeazabal por WhatsApp">+591 72879584</a>
+                  </div>
+                  <div>
+                    <strong>Fernanda Siles</strong>
+                    <a href="https://wa.me/59167636799" target="_blank" rel="noreferrer" aria-label="Contactar a Fernanda Siles por WhatsApp">+591 67636799</a>
+                  </div>
                 </div>
               )}
             </div>
