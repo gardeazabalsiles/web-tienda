@@ -7,5 +7,6 @@ import CartPage from "../pages/CartPage";
 import ProfilePage from "../pages/ProfilePage";
 import PublishProductPage from "../pages/PublishProductPage";
 import ChatPage from "../pages/ChatPage";
+import CategoryPage from "../pages/CategoryPage";
 
-export default function AppRoutes(){return <BrowserRouter><Routes><Route path="/" element={<HomePage/>}/><Route path="/login" element={<LoginPage/>}/><Route path="/crear-cuenta" element={<RegisterPage/>}/><Route path="/producto/:id" element={<ProductDetailPage/>}/><Route path="/carrito" element={<CartPage/>}/><Route path="/perfil" element={<ProfilePage/>}/><Route path="/publicar" element={<PublishProductPage/>}/><Route path="/chat/:userId" element={<ChatPage/>}/><Route path="*" element={<HomePage/>}/></Routes></BrowserRouter>}
+export default function AppRoutes(){return <BrowserRouter><Routes><Route path="/" element={<HomePage/>}/><Route path="/categoria/:category" element={<CategoryPage/>}/><Route path="/login" element={<LoginPage/>}/><Route path="/crear-cuenta" element={<RegisterPage/>}/><Route path="/producto/:id" element={<ProductDetailPage/>}/><Route path="/carrito" element={<CartPage/>}/><Route path="/perfil" element={<ProfilePage/>}/><Route path="/publicar" element={<PublishProductPage/>}/><Route path="/chat/:userId" element={<ChatPage/>}/><Route path="*" element={<HomePage/>}/></Routes></BrowserRouter>}
