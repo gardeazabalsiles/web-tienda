@@ -9,7 +9,7 @@ export interface Order {
   items: Array<{ product: Product; size: string; quantity: number }>;
   total: number;
   payment: "efectivo" | "qr";
-  status: "Pendiente" | "Confirmado";
+  status: "Pendiente" | "Confirmado" | "Cancelado";
   createdAt: string;
 }
 
