@@ -68,7 +68,7 @@ export default function HomePage() {
           <aside className="side-menu" aria-label="Menú principal">
             <div className="side-menu-item">
               <button onClick={() => setCategoriesOpen((value) => !value)} type="button">
-                <span>CATEGORÍAS</span><span className="menu-arrow">{categoriesOpen ? "⌃" : "›"}</span>
+                <span>CATÁLOGO</span><span className="menu-arrow">{categoriesOpen ? "⌃" : "›"}</span>
               </button>
               {categoriesOpen && (
                 <div className="submenu">
