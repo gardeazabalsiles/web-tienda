@@ -12,7 +12,7 @@ type ProductCategory = Product["category"];
 export default function HomePage() {
   const nav = useNavigate();
   const user = authRepository.getCurrentUser();
-  const [products] = useState<Product[]>(() => storageService.get<Product[]>(PRODUCTS_KEY) ?? []);
+  const [products, setProducts] = useState<Product[]>(() => storageService.get<Product[]>(PRODUCTS_KEY) ?? []);
   const [cart] = useState<CartItem[]>(() => storageService.get<CartItem[]>(CART_KEY) ?? []);
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function HomePage() {
     storageService.set(PRODUCTS_KEY, products);
   }, [products]);
 
-  const closeMenu = () => {
+  const deleteProduct = (id: number) => {\n    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;\n    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);\n    storageService.set(PRODUCTS_KEY, next);\n    setProducts(next);\n  };\n\n  const closeMenu = () => {
     setMenuOpen(false);
     setCategoriesOpen(false);
     setAboutOpen(false);
@@ -45,7 +45,7 @@ export default function HomePage() {
         {user ? (
           <div className="header-actions">
             {user.rol === "ADMIN" ? (
-              <button className="profile-button" onClick={() => nav("/admin")} aria-label="Panel de administración" type="button">⚙</button>
+              <button className="profile-button admin-profile-button" onClick={() => nav("/admin")} aria-label="Vendedores y administración" title="Vendedores" type="button">♙</button>
             ) : (
               <>
                 <button className="plus-button" onClick={() => nav("/publicar")} aria-label="Publicar prenda" type="button">＋</button>
@@ -118,7 +118,7 @@ export default function HomePage() {
             {products.map((product) => (
               <article className="product-card" key={product.id} onClick={() => nav(`/producto/${product.id}`)}>
                 <div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div>
-                <div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong><button onClick={(event) => { event.stopPropagation(); nav(`/producto/${product.id}`); }} type="button">VER DETALLES</button></div>
+                <div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong><button onClick={(event) => { event.stopPropagation(); nav(`/producto/${product.id}`); }} type="button">VER DETALLES</button>{user?.rol === "ADMIN" && <button className="admin-delete-product" onClick={(event) => { event.stopPropagation(); deleteProduct(product.id); }} type="button">ELIMINAR PRENDA</button>}</div>
               </article>
             ))}
           </div>
