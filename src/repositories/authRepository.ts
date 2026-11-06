@@ -58,6 +58,8 @@ export const authRepository = {
     return sessionUser;
   },
 
+  getAllUsers(): User[] { return getUsers().map(toSessionUser); },
+
   logout(): void { storageService.remove(SESSION_KEY); },
   getCurrentUser(): User | null { return storageService.get<User>(SESSION_KEY); },
   isAuthenticated(): boolean { return this.getCurrentUser() !== null; },
