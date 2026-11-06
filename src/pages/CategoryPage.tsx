@@ -48,7 +48,7 @@ export default function CategoryPage() {
         <>
           <button className="menu-overlay" onClick={closeMenu} aria-label="Cerrar menú" type="button" />
           <aside className="side-menu" aria-label="Menú principal">
-            <div className="side-menu-item"><button onClick={closeMenu} type="button"><span>CATEGORÍAS</span><span className="menu-arrow">⌃</span></button>
+            <div className="side-menu-item"><button onClick={closeMenu} type="button"><span>CATÁLOGO</span><span className="menu-arrow">⌃</span></button>
               <div className="submenu">
                 {categories.map((item) => <button key={item} onClick={() => { closeMenu(); nav(`/categoria/${encodeURIComponent(item)}`); }} type="button">{item}</button>)}
               </div>
@@ -58,7 +58,7 @@ export default function CategoryPage() {
         </>
       )}
 
-      <section className="category-heading"><p>COLECCIÓN</p><h1>{currentCategory}</h1><span>Explora todas las prendas disponibles en esta categoría.</span></section>
+      <section className="category-heading"><p>CATÁLOGO</p><h1>{currentCategory}</h1><span>Explora todas las prendas disponibles en esta categoría.</span></section>
 
       <section className="section category-section">
         {visibleProducts.length === 0 ? (
