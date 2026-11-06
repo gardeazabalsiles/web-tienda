@@ -13,7 +13,7 @@ export default function ChatContactsPage() {
   const nav = useNavigate();
   const me = authRepository.getCurrentUser();
   const [tab, setTab] = useState<ContactTab>("vendedores");
-  const users = storageService.get<User[]>("app_users") ?? [];
+  const users = authRepository.getAllUsers();
   const products = storageService.get<Product[]>("app_products") ?? [];
   const orders = storageService.get<Order[]>("app_orders") ?? [];
 
