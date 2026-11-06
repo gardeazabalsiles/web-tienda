@@ -22,7 +22,14 @@ export default function HomePage() {
     storageService.set(PRODUCTS_KEY, products);
   }, [products]);
 
-  const deleteProduct = (id: number) => {\n    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;\n    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);\n    storageService.set(PRODUCTS_KEY, next);\n    setProducts(next);\n  };\n\n  const closeMenu = () => {
+  const deleteProduct = (id: number) => {
+    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;
+    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);
+    storageService.set(PRODUCTS_KEY, next);
+    setProducts(next);
+  };
+
+  const closeMenu = () => {
     setMenuOpen(false);
     setCategoriesOpen(false);
     setAboutOpen(false);
