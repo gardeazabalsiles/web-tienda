@@ -15,7 +15,7 @@ export default function CategoryPage() {
   const { category } = useParams();
   const currentCategory = decodeURIComponent(category ?? "") as Product["category"];
   const user = authRepository.getCurrentUser();
-  const [products] = useState<Product[]>(() => storageService.get<Product[]>(PRODUCTS_KEY) ?? []);
+  const [products, setProducts] = useState<Product[]>(() => storageService.get<Product[]>(PRODUCTS_KEY) ?? []);
   const [cart] = useState<CartItem[]>(() => storageService.get<CartItem[]>(CART_KEY) ?? []);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,7 +26,7 @@ export default function CategoryPage() {
   }
 
   const visibleProducts = products.filter((product) => product.category === currentCategory);
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => setMenuOpen(false);\n  const deleteProduct = (id: number) => {\n    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;\n    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);\n    storageService.set(PRODUCTS_KEY, next);\n    setProducts(next);\n  };
 
   return (
     <main className="store-page">
@@ -65,7 +65,7 @@ export default function CategoryPage() {
           <div className="empty-products"><div>♡</div><h3>Aún no hay prendas en {currentCategory}</h3><p>Cuando haya publicaciones aparecerán aquí.</p></div>
         ) : (
           <div className="product-grid">
-            {visibleProducts.map((product) => <article className="product-card" key={product.id} onClick={() => nav(`/producto/${product.id}`)}><div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div><div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong><button onClick={(event) => { event.stopPropagation(); nav(`/producto/${product.id}`); }} type="button">VER DETALLES</button></div></article>)}
+            {visibleProducts.map((product) => <article className="product-card" key={product.id} onClick={() => nav(`/producto/${product.id}`)}><div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div><div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong><button onClick={(event) => { event.stopPropagation(); nav(`/producto/${product.id}`); }} type="button">VER DETALLES</button>{user?.rol === "ADMIN" && <button className="admin-delete-product" onClick={(event) => { event.stopPropagation(); deleteProduct(product.id); }} type="button">ELIMINAR PRENDA</button>}</div></article>)}
           </div>
         )}
       </section>
