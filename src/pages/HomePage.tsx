@@ -44,9 +44,15 @@ export default function HomePage() {
 
         {user ? (
           <div className="header-actions">
-            <button className="plus-button" onClick={() => nav("/publicar")} aria-label="Publicar prenda" type="button">＋</button>
-            <button className="profile-button" onClick={() => nav("/perfil")} aria-label="Mi perfil" type="button">♙</button>
-            <button className="cart-button" onClick={() => nav("/carrito")} aria-label="Carrito" type="button">🛍️<span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span></button>
+            {user.rol === "ADMIN" ? (
+              <button className="profile-button" onClick={() => nav("/admin")} aria-label="Panel de administración" type="button">⚙</button>
+            ) : (
+              <>
+                <button className="plus-button" onClick={() => nav("/publicar")} aria-label="Publicar prenda" type="button">＋</button>
+                <button className="profile-button" onClick={() => nav("/perfil")} aria-label="Mi perfil" type="button">♙</button>
+                <button className="cart-button" onClick={() => nav("/carrito")} aria-label="Carrito" type="button">🛍️<span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span></button>
+              </>
+            )}
           </div>
         ) : (
           <div className="guest-actions">
