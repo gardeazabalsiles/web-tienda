@@ -21,7 +21,7 @@ export default function AdminPage() {
   const selectedSeller = sellerId ? users.find((seller) => seller.id === sellerId) : undefined;
   const sellerOrders = selectedSeller ? activeOrders.filter((order) => order.sellerId === selectedSeller.id) : [];
   const sellerProducts = selectedSeller ? products.filter((product) => product.sellerId === selectedSeller.id) : [];
-  const soldItems = sellerOrders.flatMap((order) => order.items.map((item) => ({ ...item, order })));
+  const soldItems = sellerOrders.flatMap((order) => (Array.isArray(order.items) ? order.items : []).map((item) => ({ ...item, order })));
   const deleteProduct = (id: number) => {
     if (!window.confirm("¿Eliminar esta prenda publicada por el vendedor?")) return;
     const current = storageService.get<Product[]>("app_products") ?? [];
@@ -53,16 +53,16 @@ export default function AdminPage() {
       <section className="admin-stats">
         <article><b>{products.length}</b><span>Prendas publicadas</span></article>
         <article><b>{orders.length}</b><span>Pedidos registrados</span></article>
-        <article><b>Bs {activeOrders.reduce((sum, order) => sum + order.total, 0).toFixed(2)}</b><span>Total de pedidos no cancelados</span></article>
+        <article><b>Bs {activeOrders.reduce((sum, order) => sum + (Number(order.total) || 0), 0).toFixed(2)}</b><span>Total de pedidos no cancelados</span></article>
       </section>
       <section><h2>Vendedores de la tienda</h2><p className="admin-section-intro">Selecciona un vendedor para consultar sus datos, pedidos y prendas vendidas.</p>{sellers.length === 0 ? <p>Aún no hay usuarios con ventas registradas.</p> : sellers.map((seller: User) => {
         const sellerSales = activeOrders.filter((order) => order.sellerId === seller.id);
-        const quantity = sellerSales.reduce((sum, order) => sum + order.items.reduce((n, item) => n + item.quantity, 0), 0);
-        const total = sellerSales.reduce((sum, order) => sum + order.total, 0);
+        const quantity = sellerSales.reduce((sum, order) => sum + (Array.isArray(order.items) ? order.items.reduce((n, item) => n + (Number(item.quantity) || 0), 0) : 0), 0);
+        const total = sellerSales.reduce((sum, order) => sum + (Number(order.total) || 0), 0);
         return <button className="admin-seller-row" key={seller.id} onClick={() => navigate(`/admin/vendedor/${encodeURIComponent(seller.id)}`)}><span className="admin-seller-icon">♙</span><span className="admin-seller-name"><b>{seller.nombre} {seller.apellido}</b><small>{seller.email}</small></span><span className="admin-seller-sales">{quantity} prendas · Bs {total.toFixed(2)}</span><span className="admin-seller-arrow">›</span></button>;
       })}</section>
       <section><h2>Publicaciones de clientes</h2>{products.length === 0 ? <p>No hay prendas publicadas.</p> : products.map((product) => <article className="admin-product" key={product.id}><div>{product.images[0] && <img src={product.images[0]} alt={product.name}/>}</div><div><h3>{product.name}</h3><p>Vendedor: {product.sellerName}</p><b>Bs {product.price.toFixed(2)}</b></div><button onClick={() => deleteProduct(product.id)}>Eliminar publicación</button></article>)}</section>
-      <section><h2>Todos los pedidos y ventas</h2>{orders.length === 0 ? <p>No hay pedidos registrados.</p> : orders.slice().reverse().map((order) => <article className="admin-order" key={order.id}><b>Pedido #{order.id.slice(-6)}</b><span>Comprador: {order.buyerName}</span><span>Vendedor: {order.sellerName}</span><span>Bs {order.total.toFixed(2)}</span><span>{order.status}</span><small>{new Date(order.createdAt).toLocaleString("es-BO")}</small></article>)}</section>
+      <section><h2>Todos los pedidos y ventas</h2>{orders.length === 0 ? <p>No hay pedidos registrados.</p> : orders.slice().reverse().map((order) => <article className="admin-order" key={order.id}><b>Pedido #{String(order.id).slice(-6)}</b><span>Comprador: {order.buyerName || "No disponible"}</span><span>Vendedor: {order.sellerName || "No disponible"}</span><span>Bs {(Number(order.total) || 0).toFixed(2)}</span><span>{order.status || "Sin estado"}</span><small>{order.createdAt ? new Date(order.createdAt).toLocaleString("es-BO") : "Fecha no disponible"}</small></article>)}</section>
     </>}
     <p className="admin-note">El administrador supervisa y modera. No puede comprar, vender ni publicar prendas.</p>
   </main>;
