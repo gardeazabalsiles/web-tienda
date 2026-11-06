@@ -55,6 +55,7 @@ export default function HomePage() {
               <button className="profile-button admin-profile-button" onClick={() => nav("/admin")} aria-label="Vendedores y administración" title="Vendedores" type="button">♙</button>
             ) : (
               <>
+                <button className="chat-nav-button" onClick={() => nav("/chat")} type="button">CHAT</button>
                 <button className="plus-button" onClick={() => nav("/publicar")} aria-label="Publicar prenda" type="button">＋</button>
                 <button className="profile-button" onClick={() => nav("/perfil")} aria-label="Mi perfil" type="button">♙</button>
                 <button className="cart-button" onClick={() => nav("/carrito")} aria-label="Carrito" type="button">🛍️<span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span></button>
