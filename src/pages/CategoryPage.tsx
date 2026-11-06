@@ -77,7 +77,7 @@ export default function CategoryPage() {
           <div className="empty-products"><div>♡</div><h3>Aún no hay prendas en {currentCategory}</h3><p>Cuando haya publicaciones aparecerán aquí.</p></div>
         ) : (
           <div className="product-grid">
-            {visibleProducts.map((product) => <article className="product-card" key={product.id} onClick={() => nav(`/producto/${product.id}`)}><div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div><div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong><button onClick={(event) => { event.stopPropagation(); nav(`/producto/${product.id}`); }} type="button">VER DETALLES</button>{user?.rol === "ADMIN" && <button className="admin-delete-product" onClick={(event) => { event.stopPropagation(); deleteProduct(product.id); }} type="button">ELIMINAR PRENDA</button>}</div></article>)}
+            {visibleProducts.map((product) => <article className="product-card" key={product.id} onClick={() => user?.rol !== "ADMIN" && nav(`/producto/${product.id}`)}><div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div><div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong>{user?.rol === "ADMIN" && <button className="admin-delete-product" onClick={(event) => { event.stopPropagation(); deleteProduct(product.id); }} type="button">ELIMINAR PRENDA</button>}</div></article>)}
           </div>
         )}
       </section>
