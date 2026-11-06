@@ -15,7 +15,8 @@ function LoginPage() {
 
 
   if (authRepository.isAuthenticated()) {
-    return <Navigate to="/" replace />;
+    const currentUser = authRepository.getCurrentUser();
+    return <Navigate to={currentUser?.rol === "ADMIN" ? "/admin" : "/"} replace />;
   }
 
 
@@ -32,7 +33,7 @@ function LoginPage() {
     }
 
 
-    navigate("/", { replace: true });
+    navigate(user.rol === "ADMIN" ? "/admin" : "/", { replace: true });
   };
 
 
