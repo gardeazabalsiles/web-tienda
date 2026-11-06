@@ -123,7 +123,7 @@ export default function HomePage() {
         ) : (
           <div className="product-grid">
             {products.map((product) => (
-              <article className="product-card" key={product.id} onClick={() => user?.rol !== "ADMIN" && nav(`/producto/${product.id}`)}>
+              <article className="product-card" key={product.id} onClick={() => nav(`/producto/${product.id}`)}>
                 <div className="product-image">{product.images[0] ? <img src={product.images[0]} alt={product.name} /> : <span>Sin imagen</span>}<small>{product.status}</small></div>
                 <div className="product-info"><p>{product.category}</p><h3>{product.name}</h3><strong>Bs {product.price.toFixed(2)}</strong>{user?.rol === "ADMIN" && <button className="admin-delete-product" onClick={(event) => { event.stopPropagation(); deleteProduct(product.id); }} type="button">ELIMINAR PRENDA</button>}</div>
               </article>
