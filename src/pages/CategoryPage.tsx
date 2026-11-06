@@ -26,7 +26,13 @@ export default function CategoryPage() {
   }
 
   const visibleProducts = products.filter((product) => product.category === currentCategory);
-  const closeMenu = () => setMenuOpen(false);\n  const deleteProduct = (id: number) => {\n    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;\n    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);\n    storageService.set(PRODUCTS_KEY, next);\n    setProducts(next);\n  };
+  const closeMenu = () => setMenuOpen(false);
+  const deleteProduct = (id: number) => {
+    if (!window.confirm("¿Eliminar esta prenda publicada por un vendedor?")) return;
+    const next = (storageService.get<Product[]>(PRODUCTS_KEY) ?? []).filter((product) => product.id !== id);
+    storageService.set(PRODUCTS_KEY, next);
+    setProducts(next);
+  };
 
   return (
     <main className="store-page">
@@ -35,9 +41,15 @@ export default function CategoryPage() {
         <button className="brand" onClick={() => nav("/")} type="button">TuTiendaModa</button>
         {user ? (
           <div className="header-actions">
-            <button className="plus-button" onClick={() => nav("/publicar")} type="button">＋</button>
-            <button className="profile-button" onClick={() => nav("/perfil")} type="button">♙</button>
-            <button className="cart-button" onClick={() => nav("/carrito")} type="button">🛍️<span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span></button>
+            {user.rol === "ADMIN" ? (
+              <button className="profile-button admin-profile-button" onClick={() => nav("/admin")} aria-label="Vendedores y administración" title="Vendedores" type="button">♙</button>
+            ) : (
+              <>
+                <button className="plus-button" onClick={() => nav("/publicar")} type="button">＋</button>
+                <button className="profile-button" onClick={() => nav("/perfil")} type="button">♙</button>
+                <button className="cart-button" onClick={() => nav("/carrito")} type="button">🛍️<span>{cart.reduce((sum, item) => sum + item.quantity, 0)}</span></button>
+              </>
+            )}
           </div>
         ) : (
           <div className="guest-actions"><button onClick={() => nav("/login")} type="button">INICIAR SESIÓN</button><button onClick={() => nav("/crear-cuenta")} type="button">REGISTRARSE</button></div>
